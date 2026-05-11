@@ -159,7 +159,15 @@ const S11SPA = (() => {
   window.exportData=exportData; window.importData=importData; window.clearPage=clearPage; window.populateGroupLog=populateGroupLog; window.unlockBriefing=unlockBriefing;
   window.addEventListener('hashchange',()=>show(location.hash));
   document.addEventListener('DOMContentLoaded',()=>show(location.hash));
-  return {show, goFromLink};
+  document.addEventListener('keydown',(ev)=>{
+    if(ev.key==='Enter' && ev.target && ev.target.classList && ev.target.classList.contains('passInput')){
+      const box = ev.target.closest('.lockbox');
+      const btn = box ? box.querySelector('button[onclick*="unlockBriefing"]') : null;
+      if(btn){ ev.preventDefault(); unlockBriefing(btn); }
+    }
+  });
+
+  return {show, goFromLink, exportData, importData, clearPage, populateGroupLog, unlockBriefing};
 })();
 </script>
 </body></html>
