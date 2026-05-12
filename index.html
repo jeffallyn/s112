@@ -148,7 +148,6 @@ const S11SPA = (() => {
     scope.querySelectorAll('.lockbox').forEach(box=>{
       if(localStorage.getItem(STORAGE_PREFIX + pageIdFor(box) + '::unlocked')==='1'){ box.classList.add('unlocked'); }
     });
-  });
   }
   window.exportData=exportData; window.importData=importData; window.clearPage=clearPage; window.unlockBriefing=unlockBriefing;
   window.addEventListener('hashchange',()=>show(location.hash));
